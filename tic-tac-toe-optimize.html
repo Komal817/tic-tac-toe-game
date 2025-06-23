@@ -1,0 +1,254 @@
+<!-- Winboxcolor code Optimize(number of line reduced of code) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            border: 1px solid #000;
+            padding: 20px;
+            height: 10px;
+            width: 20px;
+        }
+
+        .row {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="row1">
+            <div onclick="boxnumber(this)" class="box" id="1">1</div> <!----this is reserved key-->
+            <div onclick="boxnumber(this)" class="box" id="2"> 2</div>
+            <div onclick="boxnumber(this)" class="box" id="3">3 </div>
+        </div>
+        <div class="row2">
+            <div onclick="boxnumber(this)" class="box" id="4">4 </div>
+            <div onclick="boxnumber(this)" class="box" id="5">5 </div>
+            <div onclick="boxnumber(this)" class="box" id="6"> 6</div>
+        </div>
+        <div class="row3">
+            <div onclick="boxnumber(this)" class="box" id="7"> 7</div>
+            <div onclick="boxnumber(this)" class="box" id="8"> 8</div>
+            <div onclick="boxnumber(this)" class="box" id="9"> 9</div>
+        </div>
+    </div>
+
+    <div>
+        <div>Result: <p id="result"> </p>
+        </div>
+        <button onclick="reset()">Reset</button> <!---whwn we click Reset button then reset game after end of game--->
+        <button onclick="undoo()">Undo</button>
+    </div>
+
+    <script>
+        i = 'O', j = 'X';
+        k = 0;  //mouse click count 
+        gamewin=false;   // to check game win or not
+        let eleid = []; // empty array (use for undu method to add box id)
+
+        function boxnumber(e) {   //e is element & get all elements
+            boxid = e.id;     //get current clickbox id
+            boxtext = document.getElementById(boxid).innerHTML;
+
+            eleid.push(boxid);  // Array push() method- Adds a new element to an array (use for undu method to add box id)
+if(gamewin==false){  //if game is not win then this block run otherwise not run
+   
+            if (k % 2 == 0) {
+
+                if (boxtext == i || boxtext == j) {
+                    console.log("Ofalse: value Already exists");
+                }
+                else {
+                    e.innerHTML = i; // even number print
+                    k++;
+                    // console.log("Otrue");
+                }
+
+                // texta = e.innerHTML;
+                //console.log(texta );
+            }
+            else {
+
+                if (boxtext == i || boxtext == j) {
+                    console.log("Xfalse: value Already exists");
+                }
+                else {
+                    e.innerHTML = j;  //odd number print
+                    k++;
+                    // console.log("Xtrue");
+                }
+                // textb = e.innerHTML;
+                //  console.log(textb );
+            }
+        }
+        else{
+            console.log("gamewin true");
+        }
+            // k++;
+            console.log("K value:", k); //print k value
+
+            box1 = document.getElementById("1").innerHTML;  //get value of this id and put in variable(box1)
+            box4 = document.getElementById("4").innerHTML;
+            box7 = document.getElementById("7").innerHTML;
+            box2 = document.getElementById("2").innerHTML;
+            box3 = document.getElementById("3").innerHTML;
+            box6 = document.getElementById("6").innerHTML;
+            box9 = document.getElementById("9").innerHTML;
+            box8 = document.getElementById("8").innerHTML;
+            box5 = document.getElementById("5").innerHTML;
+
+            if (box1 == box4 && box4 == box7) {  //compare three box for equal number
+                //console.log("O Win");
+
+                if (box1 == "O") {  //we can take any number here like box1,box4,box7 for condition check-
+                    console.log("O Win");
+                    document.getElementById("result").innerHTML = "O Win";
+
+                }
+                if (box1 == "X") {
+                    console.log("X Win");
+                    document.getElementById("result").innerHTML = "X Win";
+                }
+                boxcolor([1, 4, 7]);  //FUNCTION CALL
+
+                //OR
+
+                // const colors = [1,4,7];
+                // colors.forEach((color)=>{
+                //     console.log(color);
+                //       document.getElementById(color).style = "background-color: green"; 
+                // });
+            }
+
+            else if (box1 == box2 && box2 == box3) { //if condition is true then Win 
+                if (box1 == "O") {
+                    console.log("O Win");
+                    document.getElementById("result").innerHTML = "O Win";
+                }
+                if (box1 == "X") {
+                    console.log("X Win");
+                    document.getElementById("result").innerHTML = "X Win";
+                }
+                boxcolor([1, 2, 3]);
+            }
+            else if (box3 == box6 && box6 == box9) {
+                if (box3 == "O") {
+                    console.log("O Win");
+                    document.getElementById("result").innerHTML = "O Win";
+                }
+                if (box3 == "X") {
+                    console.log("X Win");
+                    document.getElementById("result").innerHTML = "X Win";
+                }
+                boxcolor([3, 6, 9]);
+            }
+            else if (box7 == box8 && box8 == box9) {
+                if (box7 == "O") {
+                    console.log("O Win");
+                    document.getElementById("result").innerHTML = "O Win";
+                }
+                if (box7 == "X") {
+                    console.log("X Win");
+                    document.getElementById("result").innerHTML = "X Win";
+                }
+                boxcolor([7, 8, 9]);
+            }
+            else if (box4 == box5 && box5 == box6) {
+                if (box4 == "O") {
+                    console.log("O Win");
+                    document.getElementById("result").innerHTML = "O Win";
+                }
+                if (box4 == "X") {
+                    console.log("X Win");
+                    document.getElementById("result").innerHTML = "X Win";
+                }
+                boxcolor([4, 5, 6]);
+            }
+            else if (box2 == box5 && box5 == box8) {
+                if (box2 == "O") {
+                    console.log("O Win");
+                    document.getElementById("result").innerHTML = "O Win";
+                }
+                if (box8 == "X") {
+                    console.log("X Win");
+                    document.getElementById("result").innerHTML = "X Win";
+                }
+                boxcolor([2, 5, 8]);
+            }
+            else if (box1 == box5 && box5 == box9) {
+                if (box1 == "O") {
+                    console.log("O Win");
+                    document.getElementById("result").innerHTML = "O Win";
+                }
+                if (box1 == "X") {
+                    console.log("X Win");
+                    document.getElementById("result").innerHTML = "X Win";
+                }
+                boxcolor([1, 5, 9]);
+            }
+            else if (box3 == box5 && box5 == box7) {
+                if (box3 == "O") {
+                    console.log("O Win");
+                    document.getElementById("result").innerHTML = "O Win";
+                }
+                if (box3 == "X") {
+                    console.log("X Win");
+                    document.getElementById("result").innerHTML = "X Win";
+                }
+                boxcolor([3, 5, 7]);
+            }
+            else if (k == 9) {  //mouse click count, if mouse click with 9 times and any three boxes values are not matched then failed program-
+                console.log("Draw")
+                document.getElementById("result").innerHTML = "Failed";
+            }
+
+        }
+    </script>
+
+    <script>
+        r = 1;
+        function reset() {
+            for (let r = 1; r <= 9; r++) {
+                document.getElementById(r).innerHTML = r; //use for reset all element data & 'r' get the id-   
+                document.getElementById(r).style = ""; //for empty from color -
+            }
+            document.getElementById("result").innerHTML = "";  //use for Result reset
+
+        }
+    </script>
+
+    <script>
+        function boxcolor(boxarray) {  //USE FOR WIN BOX COLOR & boxarray store 1 to 9 number-
+            boxarray.forEach((color) => { // forEach 1 TO 9 NUMBER & color is variable
+                document.getElementById(color).style = "background-color: green";
+            });
+            gamewin= true; // if game win then gamewin is set true-
+        }
+
+
+        function undoo() {
+            k = k - 1;  // one value minus from current click box
+            console.log(k);
+            console.log(eleid); // eleid variable print array values like(id)
+
+            let lastelementid = eleid.pop();  // Array pop() method - Removes the last element from an array
+            console.log("Removed:", lastelementid);
+            console.log("Remaining:", eleid);
+            document.getElementById(lastelementid).innerHTML = ""; //  innerHTML = ""; empty use for reset box-
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
+<!-- Notes -->
+<!-- Zero cross print on click box -->
