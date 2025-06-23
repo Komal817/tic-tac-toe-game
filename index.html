@@ -235,14 +235,17 @@ if(gamewin==false){  //if game is not win then this block run otherwise not run
 
 
         function undoo() {
-            k = k - 1;  // one value minus from current click box
-            console.log(k);
-            console.log(eleid); // eleid variable print array values like(id)
+            if(k>0){ //k value will not decrease after becoming zero(on undu) 
 
-            let lastelementid = eleid.pop();  // Array pop() method - Removes the last element from an array
-            console.log("Removed:", lastelementid);
-            console.log("Remaining:", eleid);
-            document.getElementById(lastelementid).innerHTML = ""; //  innerHTML = ""; empty use for reset box-
+                k = k - 1;  // one value minus from current click box
+                console.log(k);
+                console.log(eleid); // eleid variable print array values like(id)
+    
+                let lastelementid = eleid.pop();  // Array pop() method - Removes the last element from an array
+                console.log("Removed:", lastelementid);
+                console.log("Remaining:", eleid);
+                document.getElementById(lastelementid).innerHTML = lastelementid; //  innerHTML = ""; empty use for reset box- lastelementid(id restore)
+            }
 
         }
 
