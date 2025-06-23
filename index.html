@@ -214,12 +214,14 @@ if(gamewin==false){  //if game is not win then this block run otherwise not run
     <script>
         r = 1;
         function reset() {
+            k=0;
+             gamewin=false; 
+             eleid = [];
             for (let r = 1; r <= 9; r++) {
                 document.getElementById(r).innerHTML = r; //use for reset all element data & 'r' get the id-   
                 document.getElementById(r).style = ""; //for empty from color -
             }
             document.getElementById("result").innerHTML = "";  //use for Result reset
-
         }
     </script>
 
